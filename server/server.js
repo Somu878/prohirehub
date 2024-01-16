@@ -2,8 +2,12 @@ const express = require("express");
 require("dotenv").config();
 const app = express();
 const db = require("./utils/_db");
+const Job = require("./models/jobModel");
 const port = process.env.PORT;
-
+app.get("/", async (req, res) => {
+  const data = await Job.find();
+  res.send(data);
+});
 app.get("/health", (req, res) => {
   res.json({
     status: "active",
