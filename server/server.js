@@ -3,6 +3,7 @@ require("dotenv").config();
 const app = express();
 const db = require("./utils/_db");
 const Job = require("./models/jobModel");
+const User = require("./models/userModel");
 const port = process.env.PORT;
 const authrouter = require("./routes/auth");
 app.get("/", async (req, res) => {
