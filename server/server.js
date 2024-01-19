@@ -2,11 +2,12 @@ const express = require("express");
 require("dotenv").config();
 const app = express();
 const db = require("./utils/_db");
-const Job = require("./models/jobModel");
-const User = require("./models/userModel");
 const port = process.env.PORT;
 const authrouter = require("./routes/authRoute");
 const jobrouter = require("./routes/jobRoute");
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
+app.use(express.json());
 app.use("/", jobrouter);
 app.use("/", authrouter);
 app.get("/health", (req, res) => {

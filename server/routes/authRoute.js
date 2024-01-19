@@ -22,6 +22,7 @@ authRouter.post("/login", async (req, res) => {
       return res.status(401).send("Invalid credentials");
     }
     const token = jwt.sign({ userId: userExists._id }, process.env.JWT_SECRET);
+    res.cookie("token", token, { httpOnly: true, secure: true });
     res.status(202).json({ token: token });
   } catch (error) {
     console.error(error);
@@ -56,6 +57,8 @@ authRouter.post("/register", async (req, res) => {
       { userId: savedUser._id },
       process.env.JWT_SECRET
     );
+    res.cookie("token", token, { httpOnly: true, secure: true });
+
     res.status(201).json({ message: "Registration successful!", token: token });
   } catch (error) {
     console.log(error);

@@ -5,8 +5,8 @@ const User = require("../models/userModel");
 const { jobValidation } = require("../validations/jobSchema");
 const jobrouter = express.Router();
 jobrouter.use(express.json());
-jobrouter.use(authorization);
-jobrouter.post("/createjob", async (req, res) => {
+// jobrouter.use(authorization);
+jobrouter.post("/createjob", authorization, async (req, res) => {
   try {
     const result = await jobValidation.validateAsync(req.body);
     const newjob = new Job({
@@ -14,15 +14,19 @@ jobrouter.post("/createjob", async (req, res) => {
       refUserId: req.userId,
     });
     await newjob.save();
-    res.status(201).send("New job created");
+    return res.status(201).send("New job created");
   } catch (error) {
-    console.error(error.details);
-    res
-      .status(400)
-      .json({ error: "Validation failed", details: error.details });
+    if (error.details) {
+      return res
+        .status(400)
+        .json({ error: "Validation failed", details: error.details });
+    } else {
+      return res.status(500).send("Internal server error");
+    }
   }
 });
-jobrouter.get("/jobdata", async (req, res) => {
+
+jobrouter.get("/jobdata", authorization, async (req, res) => {
   try {
     const data = await Job.findOne({ refUserId: req.userId });
     if (!data) {
@@ -34,5 +38,4 @@ jobrouter.get("/jobdata", async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
-
 module.exports = jobrouter;
