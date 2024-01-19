@@ -5,11 +5,13 @@ const db = require("./utils/_db");
 const Job = require("./models/jobModel");
 const User = require("./models/userModel");
 const port = process.env.PORT;
-const authrouter = require("./routes/auth");
+const authrouter = require("./routes/authRoute");
+const jobrouter = require("./routes/jobRoute");
 app.get("/", async (req, res) => {
   const data = await Job.find();
   res.send(data);
 });
+app.use("/", jobrouter);
 app.use("/", authrouter);
 app.get("/health", (req, res) => {
   res.json({

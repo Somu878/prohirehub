@@ -8,7 +8,7 @@ authRouter.use(express.json());
 authRouter.get("/userdata", authorization, async (req, res) => {
   const userID = req.userId;
   const data = await User.findOne({ _id: userID });
-  return res.status(202).send(`hello ${data.name}`);
+  return res.status(202).send(data);
 });
 authRouter.post("/login", async (req, res) => {
   try {

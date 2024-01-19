@@ -41,6 +41,14 @@ const jobSchema = new mongoose.Schema({
     type: String,
     required: [true, "About company is required"],
   },
+  otherinfo: {
+    type: String,
+    required: true,
+  },
+  refUserId: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+  },
 });
 
 const Job = mongoose.model("Job", jobSchema, "jobData");

@@ -2,3 +2,4 @@ node_modules
 playground.js
 .env
 .local
+requests.rest
