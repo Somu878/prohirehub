@@ -8,13 +8,12 @@ const jobrouter = require("./routes/jobRoute");
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 app.use(express.json());
-app.use("/", jobrouter);
-app.use("/", authrouter);
+app.use("/job", jobrouter);
+app.use("/user", authrouter);
 app.get("/health", (req, res) => {
   res.json({
     status: "active",
     message: `Server is running in port ${port}`,
-    db_status: "Connected to database Succesfully",
     time: new Date(),
   });
 });

@@ -1,9 +1,14 @@
+const { required } = require("@hapi/joi");
 const mongoose = require("mongoose");
 
 const jobSchema = new mongoose.Schema({
   role: {
     type: String,
     required: [true, "Job role is required"],
+  },
+  salary: {
+    type: Number,
+    required: true,
   },
   company: {
     type: String,
@@ -12,6 +17,10 @@ const jobSchema = new mongoose.Schema({
   companyLogoUrl: {
     type: String,
     required: [true, "Company logo URL is required"],
+  },
+  companySize: {
+    type: String,
+    required: true,
   },
   jobType: {
     type: String,

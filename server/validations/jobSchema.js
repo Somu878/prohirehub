@@ -2,8 +2,10 @@ const Joi = require("@hapi/joi");
 
 const jobValidation = Joi.object({
   role: Joi.string().required().label("Job role"),
+  salary: Joi.number().required().label("Salary"),
   company: Joi.string().required().label("Company name"),
   companyLogoUrl: Joi.string().required().label("Company logo URL"),
+  companySize: Joi.string().required().label("Company Size"),
   jobType: Joi.string()
     .valid("full-time", "part-time", "internship")
     .required()
