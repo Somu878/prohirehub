@@ -1,7 +1,6 @@
 const express = require("express");
 const authorization = require("../middlewares/authMiddleware");
 const Job = require("../models/jobModel");
-const User = require("../models/userModel");
 const { jobValidation } = require("../validations/jobSchema");
 const jobrouter = express.Router();
 jobrouter.use(express.json());
@@ -79,16 +78,21 @@ jobrouter.get("/alljobs", authorization, async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
-//search by role,comppanyName,skills
+//search by role,companyName,skills
 jobrouter.get("/search", async (req, res) => {
   try {
-    const searchTerm = req.query.term || "";
+    const role = req.query.role || "";
+    const skills = req.query.skills || "";
+    const filteredSkills = skills.split(",");
+    const SkillFilter = {};
+    if (skills.length > 0) {
+      SkillFilter.skillsRequired = {
+        $in: filteredSkills.map((skill) => new RegExp(skill, "i")),
+      };
+    }
     const matches = await Job.find({
-      $or: [
-        { role: { $regex: searchTerm, $options: "i" } },
-        { skillsRequired: { $regex: searchTerm, $options: "i" } },
-        { company: { $regex: searchTerm, $options: "i" } },
-      ],
+      role: { $regex: role, $options: "i" },
+      ...SkillFilter,
     });
     return res.status(200).json({ matches: matches });
   } catch (error) {

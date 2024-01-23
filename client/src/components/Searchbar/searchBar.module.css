@@ -1,0 +1,68 @@
+.Container {
+  margin: 40px;
+  width: 75%;
+  height: 30vh;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0px 0px 22px 4px rgba(255, 32, 32, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+input {
+  margin-top: 20px;
+  margin-left: 5vw;
+  width: 80%;
+  height: 40px;
+  background: transparent;
+  outline: none;
+  border: 2px solid #e3e3e3;
+  border-radius: 6px;
+  padding-left: 30px;
+  font-size: 15px;
+  font-family: var(--dmsans);
+  color: rgb(53, 51, 51);
+}
+.searchIcon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 22.2%;
+  left: 18.2%;
+  color: #e3e3e3;
+  cursor: pointer;
+}
+select {
+  width: 100px;
+  height: 40px;
+  color: rgb(40, 40, 40);
+  background-color: white;
+  border: 2px solid #e3e3e3;
+  outline: none;
+  border-radius: 5px;
+}
+.tag {
+  min-width: 80px;
+  max-width: auto;
+  height: 35px;
+  border-radius: 5px;
+  background-color: #ffeeee;
+  display: flex;
+  font-size: 14px;
+  font-family: var(--dmsans);
+  text-align: center;
+  padding-left: 5px;
+  cursor: pointer;
+}
+
+.addjobtn {
+  width: 130px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 17px;
+  color: white;
+  margin-left: 23px;
+  background-color: #ed5353;
+}
