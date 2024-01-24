@@ -1,0 +1,30 @@
+.login {
+  margin-left: 8vw;
+  margin-top: 19vh;
+}
+.inputContainer {
+  margin-top: -15px;
+  margin-bottom: 15px;
+}
+.inputContainer input {
+  width: 80%;
+  margin-top: 25px;
+  height: 45px;
+  outline: none;
+  background-color: transparent;
+  border: 3px solid #c2c2c2;
+  border-radius: 6px;
+  padding-left: 10px;
+  font-size: 18px;
+  color: black;
+}
+.login button {
+  margin-top: 20px;
+  background-color: #ed5353;
+  width: 140px;
+  height: 50px;
+  border: none;
+  outline: none;
+  border-radius: 7px;
+  font-size: 22px;
+}

@@ -1,0 +1,9 @@
+.container {
+  width: 50%;
+  height: 100vh;
+  background-image: url("../../assets/Banner.svg");
+  background-repeat: no-repeat;
+  text-align: center;
+  font-size: 38px;
+  color: white;
+}

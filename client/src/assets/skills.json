@@ -1,245 +1,263 @@
 [
     {
-        "skill": "Adobe Illustrator"
-    },
-    {
-        "skill": "Adobe InDesign"
-    },
-    {
-        "skill": "Adobe Photoshop"
-    },
-    {
-        "skill": "Analytics"
-    },
-    {
-        "skill": "Android"
-    },
-    {
-        "skill": "APIs"
-    },
-    {
-        "skill": "Art Design"
-    },
-    {
-        "skill": "AutoCAD"
-    },
-    {
-        "skill": "Backup Management"
-    },
-    {
-        "skill": "C"
-    },
-    {
-        "skill": "C++"
-    },
-    {
-        "skill": "Certifications"
-    },
-    {
-        "skill": "Client Server"
-    },
-    {
-        "skill": "Client Support"
-    },
-    {
-        "skill": "Configuration"
-    },
-    {
-        "skill": "Content Managment"
-    },
-    {
-        "skill": "Content Management Systems (CMS)"
-    },
-    {
-        "skill": "Corel Draw"
-    },
-    {
-        "skill": "Corel Word Perfect"
-    },
-    {
-        "skill": "CSS"
-    },
-    {
-        "skill": "Data Analytics"
-    },
-    {
-        "skill": "Desktop Publishing"
-    },
-    {
-        "skill": "Design"
-    },
-    {
-        "skill": "Diagnostics"
-    },
-    {
-        "skill": "Documentation"
-    },
-    {
-        "skill": "End User Support"
-    },
-    {
-        "skill": "Email"
-    },
-    {
-        "skill": "Engineering"
-    },
-    {
-        "skill": "Excel"
-    },
-    {
-        "skill": "FileMaker Pro"
-    },
-    {
-        "skill": "Fortran"
-    },
-    {
-        "skill": "Graphic Design"
-    },
-    {
-        "skill": "Hardware"
-    },
-    {
-        "skill": "Help Desk"
-    },
-    {
-        "skill": "HTML"
-    },
-    {
-        "skill": "Implementation"
-    },
-    {
-        "skill": "Installation"
-    },
-    {
-        "skill": "Internet"
-    },
-    {
-        "skill": "iOS"
-    },
-    {
-        "skill": "iPhone"
-    },
-    {
-        "skill": "Linux"
-    },
-    {
-        "skill": "Java"
-    },
-    {
-        "skill": "Javascript"
-    },
-    {
-        "skill": "Mac"
-    },
-    {
-        "skill": "Matlab"
-    },
-    {
-        "skill": "Maya"
-    },
-    {
-        "skill": "Microsoft Excel"
-    },
-    {
-        "skill": "Microsoft Office"
-    },
-    {
-        "skill": "Microsoft Outlook"
-    },
-    {
-        "skill": "Microsoft Publisher"
-    },
-    {
-        "skill": "Microsoft Word"
-    },
-    {
-        "skill": "Microsoft Visual"
-    },
-    {
-        "skill": "Mobile"
-    },
-    {
-        "skill": "MySQL"
-    },
-    {
-        "skill": "Networks"
-    },
-    {
-        "skill": "Open Source Software"
-    },
-    {
-        "skill": "Oracle"
-    },
-    {
-        "skill": "Perl"
-    },
-    {
-        "skill": "PHP"
-    },
-    {
-        "skill": "Presentations"
-    },
-    {
-        "skill": "Processing"
-    },
-    {
-        "skill": "Programming"
-    },
-    {
-        "skill": "PT Modeler"
+        "skill": "JavaScript"
     },
     {
         "skill": "Python"
     },
     {
-        "skill": "QuickBooks"
+        "skill": "Java"
     },
     {
-        "skill": "Ruby"
+        "skill": "C++"
     },
     {
-        "skill": "Shade"
+        "skill": "HTML"
     },
     {
-        "skill": "Software"
+        "skill": "CSS"
     },
     {
-        "skill": "Spreadsheet"
+        "skill": "React.js"
+    },
+    {
+        "skill": "Angular"
+    },
+    {
+        "skill": "Vue.js"
+    },
+    {
+        "skill": "Node.js"
+    },
+    {
+        "skill": "Express.js"
+    },
+    {
+        "skill": "Django"
+    },
+    {
+        "skill": "Flask"
+    },
+    {
+        "skill": "Spring Boot"
+    },
+    {
+        "skill": "Ruby on Rails"
+    },
+    {
+        "skill": "PHP"
     },
     {
         "skill": "SQL"
     },
     {
-        "skill": "Support"
+        "skill": "NoSQL"
     },
     {
-        "skill": "Systems Administration"
+        "skill": "MongoDB"
     },
     {
-        "skill": "Tech Support"
+        "skill": "PostgreSQL"
     },
     {
-        "skill": "Troubleshooting"
+        "skill": "Git"
     },
     {
-        "skill": "Unix"
+        "skill": "GitHub"
     },
     {
-        "skill": "UI/UX"
+        "skill": "RESTful API"
     },
     {
-        "skill": "Web Page Design"
+        "skill": "GraphQL"
     },
     {
-        "skill": "Windows"
+        "skill": "Docker"
     },
     {
-        "skill": "Word Processing"
+        "skill": "Kubernetes"
     },
     {
-        "skill": "XML"
+        "skill": "Jenkins"
     },
     {
-        "skill": "XHTML"
+        "skill": "AWS"
+    },
+    {
+        "skill": "Azure"
+    },
+    {
+        "skill": "Google Cloud Platform"
+    },
+    {
+        "skill": "Machine Learning"
+    },
+    {
+        "skill": "Data Science"
+    },
+    {
+        "skill": "TensorFlow"
+    },
+    {
+        "skill": "PyTorch"
+    },
+    {
+        "skill": "Natural Language Processing (NLP)"
+    },
+    {
+        "skill": "Computer Vision"
+    },
+    {
+        "skill": "Blockchain"
+    },
+    {
+        "skill": "React Native"
+    },
+    {
+        "skill": "Swift"
+    },
+    {
+        "skill": "Kotlin"
+    },
+    {
+        "skill": "Android"
+    },
+    {
+        "skill": "iOS"
+    },
+    {
+        "skill": "Flutter"
+    },
+    {
+        "skill": "Redux"
+    },
+    {
+        "skill": "Confluence"
+    },
+    {
+        "skill": "Webpack"
+    },
+    {
+        "skill": "Babel"
+    },
+    {
+        "skill": "TypeScript"
+    },
+    {
+        "skill": "SASS"
+    },
+    {
+        "skill": "LESS"
+    },
+    {
+        "skill": "JIRA"
+    },
+    {
+        "skill": "Agile"
+    },
+    {
+        "skill": "Scrum"
+    },
+    {
+        "skill": "Kanban"
+    },
+    {
+        "skill": "Jest"
+    },
+    {
+        "skill": "Mocha"
+    },
+    {
+        "skill": "Chai"
+    },
+    {
+        "skill": "JUnit"
+    },
+    {
+        "skill": "Selenium"
+    },
+    {
+        "skill": "CI/CD"
+    },
+    {
+        "skill": "Microservices"
+    },
+    {
+        "skill": "Serverless"
+    },
+    {
+        "skill": "Big Data"
+    },
+    {
+        "skill": "Hadoop"
+    },
+    {
+        "skill": "Spark"
+    },
+    {
+        "skill": "Elasticsearch"
+    },
+    {
+        "skill": "Linux"
+    },
+    {
+        "skill": "Bash"
+    },
+    {
+        "skill": "Shell Scripting"
+    },
+    {
+        "skill": "Cybersecurity"
+    },
+    {
+        "skill": "OWASP"
+    },
+    {
+        "skill": "Penetration Testing"
+    },
+    {
+        "skill": "Smart Contracts"
+    },
+    {
+        "skill": "Arduino"
+    },
+    {
+        "skill": "Raspberry Pi"
+    },
+    {
+        "skill": "UI/UX Design"
+    },
+    {
+        "skill": "Adobe Creative Suite"
+    },
+    {
+        "skill": "Figma"
+    },
+    {
+        "skill": "Sketch"
+    },
+    {
+        "skill": "Responsive Design"
+    },
+    {
+        "skill": "Web Accessibility"
+    },
+    {
+        "skill": "WebSockets"
+    },
+    {
+        "skill": "Rust"
+    },
+    {
+        "skill": "Go (Golang)"
+    },
+    {
+        "skill": "Scala"
+    },
+    {
+        "skill": "ASP.NET"
+    },
+    {
+        "skill": "RxJS"
     }
 ]

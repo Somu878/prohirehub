@@ -3,11 +3,10 @@ import styles from "./searchBar.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import skillset from "..//../assets/skills.json";
-
-function SearchBar() {
+import { Link } from "react-router-dom";
+function SearchBar(fetchedData) {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [inputValue, setInputValue] = useState("");
-
   const handleSelect = (e) => {
     const selectedSkill = e.target.value;
     if (selectedSkill && !selectedOptions.includes(selectedSkill)) {
@@ -39,8 +38,8 @@ function SearchBar() {
       <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} />
       <div style={{ marginLeft: "5vw" }}>
         <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
-          <select name="skills" onChange={handleSelect}>
-            <option value="skillSet" disabled selected>
+          <select name="skills" onChange={handleSelect} defaultValue="default">
+            <option value="default" disabled>
               Skills
             </option>
             {skillset.map((item) => (
@@ -62,7 +61,10 @@ function SearchBar() {
               <Tag key={item} data={item} onDeSelect={handleDeSelect} />
             ))}
           </div>
-          <button className={styles.addjobtn}>+Add Job</button>
+          <Link to="/addjob" style={{ textDecoration: "none", color: "black" }}>
+            {" "}
+            <button className={styles.addjobtn}>+Add Job</button>
+          </Link>
         </div>
       </div>
     </div>

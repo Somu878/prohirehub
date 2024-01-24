@@ -1,7 +1,7 @@
 .Container {
   margin: 40px;
   width: 75%;
-  height: 30vh;
+  height: 25vh;
   background-color: #ffffff;
   border-radius: 4px;
   box-shadow: 0px 0px 22px 4px rgba(255, 32, 32, 0.25);
@@ -9,7 +9,7 @@
   flex-direction: column;
   gap: 20px;
 }
-input {
+.Container input {
   margin-top: 20px;
   margin-left: 5vw;
   width: 80%;
@@ -40,9 +40,10 @@ select {
   border: 2px solid #e3e3e3;
   outline: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 .tag {
-  min-width: 80px;
+  min-width: 50px;
   max-width: auto;
   height: 35px;
   border-radius: 5px;
@@ -65,4 +66,5 @@ select {
   color: white;
   margin-left: 23px;
   background-color: #ed5353;
+  cursor: pointer;
 }

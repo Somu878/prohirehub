@@ -57,7 +57,9 @@ authRouter.post("/register", async (req, res) => {
       { userId: savedUser._id },
       process.env.JWT_SECRET
     );
-    res.cookie("token", token, { httpOnly: true, secure: true });
+    res.cookie("token", token, {
+      httpOnly: true,
+    });
 
     res.status(201).json({ message: "Registration successful!", token: token });
   } catch (error) {
