@@ -5,6 +5,7 @@ import Login from "./pages/login/Login";
 import PostJob from "./pages/postJob/PostJob";
 import JobDetail from "./pages/jobDetails/JobDetail";
 import Register from "./pages/registration/Register";
+import toast, { Toaster } from "react-hot-toast";
 function App() {
   return (
     <BrowserRouter>
@@ -15,6 +16,7 @@ function App() {
         <Route path="/addJob" element={<PostJob />} />
         <Route path="/jobdetails" element={<JobDetail />} />
       </Routes>
+      <Toaster position="top-center" reverseOrder="false" />
     </BrowserRouter>
   );
 }

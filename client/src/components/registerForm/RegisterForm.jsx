@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./form.module.css";
 import { registerUser } from "../../apis/auth";
 import { useNavigate } from "react-router-dom";
-
+import toast, { Toaster } from "react-hot-toast";
 function RegisterForm() {
   const navigate = useNavigate();
   const [registerData, setRegisterData] = useState({
@@ -24,10 +24,12 @@ function RegisterForm() {
         registerData.mobileNumber,
         registerData.password
       );
-      if (response.data.message === "Registration successful!") {
+      if (response.message === "Registration successful!") {
+        toast.success("Sucessfully registered!");
         navigate("/");
       }
     } catch (error) {
+      toast.error("Account already exists! Please login");
       console.error("Registration failed:", error);
     }
   };

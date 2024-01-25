@@ -15,11 +15,11 @@ authRouter.post("/login", async (req, res) => {
     const { email, password } = req.body;
     const userExists = await User.findOne({ email: email });
     if (!userExists) {
-      return res.status(400).send("User not found");
+      return res.status(200).send("User not found");
     }
     const passwordMatch = await bcrypt.compare(password, userExists.password);
     if (!passwordMatch) {
-      return res.status(401).send("Invalid credentials");
+      return res.status(200).send("Invalid credentials");
     }
     const token = jwt.sign({ userId: userExists._id }, process.env.JWT_SECRET);
     res.cookie("token", token, { httpOnly: true, secure: true });

@@ -1,6 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./loginform.module.css";
+import { LoginUser } from "../../apis/auth";
+import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 function LoginForm() {
+  const navigate = useNavigate();
+  const [loginData, setLoginData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setLoginData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await LoginUser(loginData.email, loginData.password);
+
+      if (response.token) {
+        toast.success("Logged In!");
+        navigate("/");
+      } else if (response === "Invalid credentials") {
+        toast("Invalid credentials", {
+          icon: "⛔",
+        });
+      } else if (response === "User not found") {
+        toast.error("Account not found,Please register!");
+      }
+    } catch (error) {
+      toast.error("Please try again!");
+      console.error("Login failed:", error);
+    }
+  };
+
   return (
     <div className={styles.login}>
       <p style={{ fontSize: "35px" }}>Already have an account?</p>
@@ -12,17 +47,21 @@ function LoginForm() {
           type="text"
           name="email"
           placeholder="Email"
+          value={loginData.email}
+          onChange={handleInputChange}
           required
           spellCheck="false"
         />
         <input
           type="password"
           name="password"
+          value={loginData.password}
+          onChange={handleInputChange}
           placeholder="Password"
           required
         />
       </div>
-      <button>Sign in</button>
+      <button onClick={handleLogin}>Sign in</button>
       <p>
         Don’t have an account?{" "}
         <a style={{ color: "black" }} href="/register">
