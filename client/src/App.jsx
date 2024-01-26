@@ -13,8 +13,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/addJob" element={<PostJob />} />
-        <Route path="/jobdetails" element={<JobDetail />} />
+        <Route path="/addjob" element={<PostJob />} />
+        <Route path="/job-details/:id" element={<JobDetail />} />
       </Routes>
       <Toaster position="top-center" reverseOrder="false" />
     </BrowserRouter>

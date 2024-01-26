@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
 module.exports = async (req, res, next) => {
   try {
-    const token = req.cookies.token;
+    const token = req.headers.token;
     if (!token) {
       return res.status(400).send("Token not found");
     }

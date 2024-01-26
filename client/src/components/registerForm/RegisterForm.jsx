@@ -24,8 +24,9 @@ function RegisterForm() {
         registerData.mobileNumber,
         registerData.password
       );
-      if (response.message === "Registration successful!") {
-        toast.success("Sucessfully registered!");
+      if (response.status === "success") {
+        localStorage.setItem("token", response.token);
+        toast.success(`Sucessfully registered! as${response.username}`);
         navigate("/");
       }
     } catch (error) {

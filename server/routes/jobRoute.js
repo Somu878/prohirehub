@@ -14,7 +14,7 @@ jobrouter.post("/newjob", authorization, async (req, res) => {
       refUserId: req.userId,
     });
     await newjob.save();
-    return res.status(201).send("New job created");
+    return res.status(201).send({ status: "success" });
   } catch (error) {
     if (error.details) {
       return res
@@ -36,11 +36,9 @@ jobrouter.put("/edit/:jobID", async (req, res) => {
       runValidators: true,
     });
     if (!updatedJob) {
-      return res.status(404).json({ message: "Job not found" });
+      return res.status(404).json({ status: "not found" });
     }
-    return res
-      .status(200)
-      .json({ message: "Job updated successfully", data: updatedJob });
+    return res.status(200).json({ status: "success", data: updatedJob });
   } catch (error) {
     if (error.details) {
       return res
@@ -57,7 +55,7 @@ jobrouter.get("/getjob/:jobID", async (req, res) => {
     const jobID = req.params.jobID;
     const jobToDisplay = await Job.findById(jobID);
     if (!jobToDisplay) {
-      return res.status(404).send("Job doesn't exist with that jobID");
+      return res.status(404).send({ status: "not exist" });
     }
     return res.status(200).send(jobToDisplay);
   } catch (error) {
@@ -72,7 +70,7 @@ jobrouter.get("/alljobs", authorization, async (req, res) => {
     if (!data) {
       return res.status(404).json({ message: "No jobs found for the user" });
     }
-    res.status(200).json(data);
+    res.status(200).json({ jobs: data, id: req.userId });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -109,7 +107,7 @@ jobrouter.delete("/delete/:jobID", async (req, res) => {
     if (result.deletedCount === 0) {
       return res.status(404).send("Job not found with that jobID");
     }
-    return res.status(200).send("Job deleted successfully");
+    return res.status(200).send({ status: "success" });
   } catch (error) {
     console.error(error);
     return res.status(500).send("Internal Server Error");

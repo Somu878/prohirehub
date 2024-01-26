@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./jobTile.module.css";
+import { Link } from "react-router-dom";
 function JobTile({
   role,
   salary,
@@ -7,12 +8,20 @@ function JobTile({
   location,
   logo,
   skills,
-  jobid,
+  access,
   city,
+  jobid,
   companySize,
 }) {
+  const [select, setselect] = useState(false);
+  const handleClick = () => {
+    setselect(true);
+  };
   return (
-    <div className={styles.tile}>
+    <div
+      className={`${styles.tile} ${select ? styles.selected : ""}`}
+      onClick={handleClick}
+    >
       <div style={{ display: "flex" }}>
         <img
           style={{ width: "45px", height: "45px", margin: "30px" }}
@@ -44,7 +53,7 @@ function JobTile({
             }}
           >
             <p>👥 {companySize}</p>
-            <p>💵 {salary}</p>
+            <p>₹{salary}</p>
             <p>INDIA</p>
             <p>{city}</p>
           </div>
@@ -64,8 +73,6 @@ function JobTile({
       </div>
       <div
         style={{
-          display: "flex",
-          flexDirection: "column",
           marginTop: "1px",
         }}
       >
@@ -73,26 +80,36 @@ function JobTile({
           style={{
             display: "flex",
             flexDirection: "row",
-            flexWrap: "wrap",
-            width: "40%",
+            justifyContent: "flex-end",
+            margin: "12px",
+            marginBottom: "20px",
           }}
         >
           {skills?.map((item) => (
-            <p
+            <span
               style={{
                 marginLeft: "10px ",
                 background: "#FFEEEE",
-                padding: "3px",
-                minWidth: "70px",
-                maxWidth: "auto",
+                padding: "2px",
+                fontSize: "15px",
               }}
             >
               {item}
-            </p>
+            </span>
           ))}
         </div>
-        <div>
-          <button>view details</button>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            paddingTop: "10px",
+          }}
+        >
+          {access ? <button style={{ color: "#ed5353" }}>Edit Job</button> : ""}
+          <Link to={`/job-details/${jobid}`}>
+            {" "}
+            <button style={{ background: "#ed5353" }}>View Details</button>
+          </Link>
         </div>
       </div>
     </div>

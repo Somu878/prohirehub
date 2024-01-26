@@ -20,15 +20,14 @@ function LoginForm() {
     try {
       const response = await LoginUser(loginData.email, loginData.password);
 
-      if (response.token) {
-        toast.success("Logged In!");
+      if (response.status === "success") {
+        toast.success(`Logged in as ${response.username}`);
+        localStorage.setItem("token", response.token);
         navigate("/");
-      } else if (response === "Invalid credentials") {
-        toast("Invalid credentials", {
-          icon: "⛔",
-        });
-      } else if (response === "User not found") {
-        toast.error("Account not found,Please register!");
+      } else if (response.status === "invalid") {
+        toast.error("Invalid Password");
+      } else if (response.status === "not found") {
+        toast.error("Email not,Please register!");
       }
     } catch (error) {
       toast.error("Please try again!");

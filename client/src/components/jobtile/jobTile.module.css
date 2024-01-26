@@ -12,14 +12,19 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 5px;
+  margin-bottom: 40px;
+}
+.selected {
+  border-left: 4px solid #ed5353;
 }
 .tile button {
-  background-color: #ed5353;
+  background-color: transparent;
   border: none;
   outline: none;
   width: 130px;
   height: 32px;
   font-size: 18px;
+  border: 2px solid #ed5353;
   border-radius: 4px;
   margin-right: 10px;
   cursor: pointer;

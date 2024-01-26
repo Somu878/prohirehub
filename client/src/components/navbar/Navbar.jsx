@@ -1,13 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./navbar.module.css";
 import profileIcon from "../../assets/3135715.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { getUserId } from "../../apis/auth";
+
 const linkstyle = {
   textDecoration: "none",
   color: "inherit",
 };
+
 function Navbar() {
-  const request = 1;
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await getUserId();
+        if (response) {
+          setUser(response);
+        }
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchUserData();
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setUser(null);
+    // navigate("/login");
+  };
+
   return (
     <div className={styles.navbar}>
       <a style={{ textDecoration: "none", color: "white" }} href="/">
@@ -17,15 +45,12 @@ function Navbar() {
         style={{ marginRight: "4vw", paddingTop: "30px" }}
         className={styles.registration}
       >
-        {request ? (
+        {loading ? (
+          <p>Please wait! Fetching Data</p>
+        ) : !user ? (
           <div style={{ display: "flex", gap: "25px" }}>
             <Link style={linkstyle} to="/login">
-              <button
-                style={{
-                  background: "transparent",
-                  color: "white",
-                }}
-              >
+              <button style={{ background: "transparent", color: "white" }}>
                 Login
               </button>
             </Link>
@@ -37,15 +62,20 @@ function Navbar() {
           </div>
         ) : (
           <div style={{ display: "flex", gap: "25px" }}>
-            <button style={{ background: "transparent" }}>Logout</button>
+            <button
+              onClick={handleLogout}
+              style={{ background: "transparent" }}
+            >
+              Logout
+            </button>
             <div style={{ display: "flex", gap: "10px" }}>
               <p style={{ fontFamily: "var(--dmsans)", marginTop: "7px" }}>
-                Hello Recruiter!
+                Hello, {user.username}!
               </p>
               <img
-                style={{ width: "33px", height: "33px", marginTop: "4px" }}
+                style={{ width: "33px", height: "33px", marginTop: "3px" }}
                 src={profileIcon}
-                alt="profileICon"
+                alt="profileIcon"
               />
             </div>
           </div>

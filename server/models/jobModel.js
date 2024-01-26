@@ -22,6 +22,10 @@ const jobSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  location: {
+    type: String,
+    required: true,
+  },
   jobType: {
     type: String,
     required: [true, "Job type is required"],
