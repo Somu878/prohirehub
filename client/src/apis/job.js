@@ -31,3 +31,27 @@ export async function dataOnSearch(role, skills) {
     console.log(error);
   }
 }
+export async function getJobDataID(jobID) {
+  const baseURL = import.meta.env.VITE_APP_BASE_URL;
+  try {
+    const response = await axios.get(`${baseURL}/job/getjob/${jobID}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+export async function addJob(jobdata) {
+  const baseURL = import.meta.env.VITE_APP_BASE_URL;
+  const payload = { ...jobdata };
+  try {
+    const response = await axios.post(`${baseURL}/job/newjob`, payload, {
+      headers: {
+        token,
+        "Content-Type": "application/json",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}

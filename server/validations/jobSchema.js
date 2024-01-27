@@ -7,10 +7,7 @@ const jobValidation = Joi.object({
   companyLogoUrl: Joi.string().required().label("Company logo URL"),
   companySize: Joi.string().required().label("Company Size"),
   location: Joi.string().required().label("Job location"),
-  jobType: Joi.string()
-    .valid("full-time", "part-time", "internship")
-    .required()
-    .label("Job type"),
+  jobType: Joi.string().required().label("Job type"),
   jobLocation: Joi.string()
     .valid("remote", "in-office", "hybrid")
     .required()

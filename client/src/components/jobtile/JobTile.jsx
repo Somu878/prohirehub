@@ -105,7 +105,13 @@ function JobTile({
             paddingTop: "10px",
           }}
         >
-          {access ? <button style={{ color: "#ed5353" }}>Edit Job</button> : ""}
+          {access ? (
+            <Link to={`/editjob/${jobid}`}>
+              <button style={{ color: "#ed5353" }}>Edit Job</button>
+            </Link>
+          ) : (
+            ""
+          )}
           <Link to={`/job-details/${jobid}`}>
             {" "}
             <button style={{ background: "#ed5353" }}>View Details</button>

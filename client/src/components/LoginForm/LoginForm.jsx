@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./loginform.module.css";
 import { LoginUser } from "../../apis/auth";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 function LoginForm() {
   const navigate = useNavigate();

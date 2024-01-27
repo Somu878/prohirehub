@@ -5,7 +5,6 @@ const { jobValidation } = require("../validations/jobSchema");
 const jobrouter = express.Router();
 jobrouter.use(express.json());
 
-//add a new job
 jobrouter.post("/newjob", authorization, async (req, res) => {
   try {
     const result = await jobValidation.validateAsync(req.body);

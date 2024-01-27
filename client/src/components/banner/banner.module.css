@@ -7,3 +7,15 @@
   font-size: 38px;
   color: white;
 }
+.container2 {
+  width: 48%;
+  height: 128vh;
+  background-color: black;
+  background-image: url("../../assets/WallpaperDog-20567151 1.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  font-size: 32px;
+  color: white;
+}
