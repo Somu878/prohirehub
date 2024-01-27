@@ -4,23 +4,39 @@ import SearchBar from "../../components/Searchbar/searchBar";
 import JobTile from "../../components/jobtile/JobTile";
 import { Toaster } from "react-hot-toast";
 import { getDataonMount } from "../../apis/job";
+import { dataOnSearch } from "../../apis/job";
+
 function Home() {
   const [data, setData] = useState(null);
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await getDataonMount();
-        if (response) {
-          setData(response);
-          console.log(response);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
+  const curUser = localStorage.getItem("userid");
+  const getData = async () => {
+    try {
+      const response = await getDataonMount();
+      if (response) {
+        setData(response);
       }
-    };
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const getDataFromSearch = async (role, skills) => {
+    try {
+      const response = await dataOnSearch(role, skills);
+      if (response) {
+        setData(response);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const onSearch = (role, skills) => {
+    getDataFromSearch(role, skills);
+  };
+
+  useEffect(() => {
     getData();
-  }, []);
+  }, [curUser]);
+
   return (
     <div>
       <Toaster position="top-center" reverseOrder={false} />
@@ -32,11 +48,11 @@ function Home() {
             justifyContent: "center",
           }}
         >
-          <SearchBar />
+          <SearchBar loggedIn={curUser} onSearch={onSearch} />
         </div>
       </div>
       {data &&
-        data.jobs.map((item) => (
+        data.map((item) => (
           <JobTile
             key={item._id}
             role={item.role}
@@ -47,7 +63,7 @@ function Home() {
             companySize={item.companySize}
             skills={item.skillsRequired}
             jobid={item._id}
-            access={item.refUserId === data.id}
+            access={item.refUserId === curUser}
           />
         ))}
     </div>

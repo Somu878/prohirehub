@@ -53,7 +53,7 @@ function JobTile({
             }}
           >
             <p>👥 {companySize}</p>
-            <p>₹{salary}</p>
+            <p>₹{salary}/month</p>
             <p>INDIA</p>
             <p>{city}</p>
           </div>

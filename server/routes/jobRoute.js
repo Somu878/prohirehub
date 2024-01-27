@@ -64,13 +64,13 @@ jobrouter.get("/getjob/:jobID", async (req, res) => {
   }
 });
 //to get all jobs
-jobrouter.get("/alljobs", authorization, async (req, res) => {
+jobrouter.get("/alljobs", async (req, res) => {
   try {
     const data = await Job.find();
     if (!data) {
       return res.status(404).json({ message: "No jobs found for the user" });
     }
-    res.status(200).json({ jobs: data, id: req.userId });
+    res.status(200).json(data);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -92,7 +92,7 @@ jobrouter.get("/search", async (req, res) => {
       role: { $regex: role, $options: "i" },
       ...SkillFilter,
     });
-    return res.status(200).json({ matches: matches });
+    return res.status(200).json(matches);
   } catch (error) {
     console.error(error);
     return res.status(500).send("Internal Server Error");

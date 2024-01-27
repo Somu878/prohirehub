@@ -4,26 +4,36 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import skillset from "..//../assets/skills.json";
 import { Link } from "react-router-dom";
-function SearchBar(fetchedData) {
+
+function SearchBar({ onSearch, loggedIn }) {
+  const [searchQuery, setSearchQuery] = useState("");
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [inputValue, setInputValue] = useState("");
+
   const handleSelect = (e) => {
     const selectedSkill = e.target.value;
     if (selectedSkill && !selectedOptions.includes(selectedSkill)) {
       setSelectedOptions((prevOptions) => [...prevOptions, selectedSkill]);
     }
   };
+
   const handleDeSelect = (selectedSkill) => {
     setSelectedOptions((prevOptions) =>
       prevOptions.filter((option) => option !== selectedSkill)
     );
   };
+
   const handleSearchSubmit = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      alert("Submitted!");
+      onSearch(inputValue, selectedOptions.join(","));
     }
   };
+  const handleClear = () => {
+    setSearchQuery("");
+    setSelectedOptions([]);
+  };
+
   return (
     <div className={styles.Container}>
       <input
@@ -61,10 +71,30 @@ function SearchBar(fetchedData) {
               <Tag key={item} data={item} onDeSelect={handleDeSelect} />
             ))}
           </div>
-          <Link to="/addjob" style={{ textDecoration: "none", color: "black" }}>
-            {" "}
-            <button className={styles.addjobtn}>+Add Job</button>
-          </Link>
+          <div>
+            <p
+              style={{
+                color: "#ED5353",
+                fontSize: "17px",
+                marginTop: "60px",
+                cursor: "pointer",
+              }}
+              onClick={handleClear}
+            >
+              Clear
+            </p>
+          </div>
+          {loggedIn ? (
+            <Link
+              to="/addjob"
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              {" "}
+              <button className={styles.addjobtn}>+Add Job</button>
+            </Link>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>
@@ -85,6 +115,7 @@ function Tag({ data, onDeSelect }) {
           fontSize: "20px",
           borderBottomRightRadius: "5px",
           borderTopRightRadius: "5px",
+          cursor: "pointer",
         }}
         onClick={() => onDeSelect(data)}
       >
