@@ -3,12 +3,10 @@ import Navbar from "../../components/navbar/Navbar";
 import SearchBar from "../../components/Searchbar/searchBar";
 import JobTile from "../../components/jobtile/JobTile";
 import { Toaster } from "react-hot-toast";
-import { getDataonMount } from "../../apis/job";
-import { dataOnSearch } from "../../apis/job";
-
+import { getDataonMount, dataOnSearch } from "../../apis/job";
 function Home() {
   const [data, setData] = useState(null);
-  const curUser = localStorage.getItem("userid");
+  const curUser = localStorage.getItem("id");
   const getData = async () => {
     try {
       const response = await getDataonMount();
@@ -64,6 +62,7 @@ function Home() {
             skills={item.skillsRequired}
             jobid={item._id}
             access={item.refUserId === curUser}
+            joblocation={item.location}
           />
         ))}
     </div>

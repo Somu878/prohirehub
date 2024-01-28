@@ -12,6 +12,7 @@ function JobTile({
   city,
   jobid,
   companySize,
+  joblocation,
 }) {
   const [select, setselect] = useState(false);
   const handleClick = () => {
@@ -55,6 +56,7 @@ function JobTile({
             <p>👥 {companySize}</p>
             <p>₹{salary}/month</p>
             <p>INDIA</p>
+            <p>{joblocation}</p>
             <p>{city}</p>
           </div>
           <div

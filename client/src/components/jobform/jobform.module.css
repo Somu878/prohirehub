@@ -5,7 +5,7 @@
 }
 /* .container form {
 } */
-.container form textarea {
+.container .form textarea {
   width: 63%;
   background-color: transparent;
   border: 2px solid #c2c2c2;
@@ -17,7 +17,7 @@
   padding-top: 3px;
   color: black;
 }
-.container form input {
+.container .form input {
   padding-left: 10px;
   padding-top: 3px;
   width: 63%;

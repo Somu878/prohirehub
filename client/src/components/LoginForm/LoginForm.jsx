@@ -23,6 +23,7 @@ function LoginForm() {
       if (response.status === "success") {
         toast.success(`Logged in as ${response.username}`);
         localStorage.setItem("token", response.token);
+        localStorage.setItem("id", response.id);
         navigate("/");
       } else if (response.status === "invalid") {
         toast.error("Invalid Password");

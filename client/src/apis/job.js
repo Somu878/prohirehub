@@ -55,3 +55,18 @@ export async function addJob(jobdata) {
     console.log(error);
   }
 }
+export async function EditJob(jobID, jobdata) {
+  const baseURL = import.meta.env.VITE_APP_BASE_URL;
+  const payload = { ...jobdata };
+  try {
+    const response = await axios.put(`${baseURL}/job/edit/${jobID}`, payload, {
+      headers: {
+        token,
+        "Content-Type": "application/json",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}

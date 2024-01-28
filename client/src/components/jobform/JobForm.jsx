@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./jobform.module.css";
-import { getJobDataID, addJob } from "../../apis/job";
+import { getJobDataID, addJob, EditJob } from "../../apis/job";
 import { useParams } from "react-router-dom";
 function JobForm({ method, handleSubmit }) {
   const { id } = useParams();
@@ -35,13 +35,19 @@ function JobForm({ method, handleSubmit }) {
   async function handleAdd() {
     try {
       const response = await addJob(jobData);
-      console.log(jobData);
       console.log(response);
     } catch (error) {
       console.log(error);
     }
   }
-  function handleEdit() {}
+  async function handleEdit() {
+    try {
+      const response = await EditJob(id, jobData);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setJobData((prevData) => ({ ...prevData, [name]: value }));
@@ -67,7 +73,10 @@ function JobForm({ method, handleSubmit }) {
   return (
     <div className={styles.container}>
       <h1>{method} job description</h1>
-      <form style={{ display: "flex", flexDirection: "column" }}>
+      <div
+        className={styles.form}
+        style={{ display: "flex", flexDirection: "column" }}
+      >
         <div className={styles.formgroup}>
           {" "}
           <label htmlFor="company">Company Name</label>
@@ -158,9 +167,9 @@ function JobForm({ method, handleSubmit }) {
             <option value="default" disabled>
               Select
             </option>
-            <option value="Remote">Remote</option>
-            <option value="In-office">In-office</option>
-            <option value="Hybrid">Hybrid</option>
+            <option value="remote">Remote</option>
+            <option value="in-office">In-office</option>
+            <option value="hybrid">Hybrid</option>
           </select>
         </div>
         <div className={styles.formgroup}>
@@ -241,7 +250,7 @@ function JobForm({ method, handleSubmit }) {
             <button onClick={handleEdit}>Edit Job</button>
           )}
         </div>
-      </form>
+      </div>
     </div>
   );
 }

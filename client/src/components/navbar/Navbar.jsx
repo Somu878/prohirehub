@@ -15,26 +15,25 @@ function Navbar() {
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("userid");
+    localStorage.removeItem("id");
     setUser(null);
     navigate("/login");
   };
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await getUserId();
-        if (response) {
-          setUser(response);
-          localStorage.setItem("userid", response.id);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
+  const fetchUserData = async () => {
+    try {
+      const response = await getUserId();
+      if (response) {
+        setUser(response);
       }
-    };
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
     fetchUserData();
-  }, [handleLogout]);
+  }, []);
 
   return (
     <div className={styles.navbar}>

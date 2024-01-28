@@ -32,9 +32,12 @@ authRouter.post("/login", async (req, res) => {
     //   secure: false,
     //   sameSite: "none",
     // });
-    res
-      .status(202)
-      .json({ status: "success", token: token, username: userExists.name });
+    res.status(202).json({
+      status: "success",
+      token: token,
+      username: userExists.name,
+      id: userExists._id,
+    });
   } catch (error) {
     console.error(error);
     return res.status(500).send("Internal Server Error");
@@ -72,9 +75,12 @@ authRouter.post("/register", async (req, res) => {
     //   httpOnly: true,
     // });
 
-    res
-      .status(201)
-      .json({ status: "success", token: token, username: newuser.name });
+    res.status(201).json({
+      status: "success",
+      token: token,
+      username: newuser.name,
+      id: newuser._id,
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).send("Internal Server Error");
