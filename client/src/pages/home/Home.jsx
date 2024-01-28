@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
-import SearchBar from "../../components/Searchbar/searchBar";
+import SearchBar from "../../components/Searchbar/SearchBar";
 import JobTile from "../../components/jobtile/JobTile";
 import { Toaster } from "react-hot-toast";
 import { getDataonMount, dataOnSearch } from "../../apis/job";
