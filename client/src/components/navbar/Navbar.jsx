@@ -42,7 +42,7 @@ function Navbar() {
   return (
     <div className={styles.navbar}>
       <a style={{ textDecoration: "none", color: "white" }} href="/">
-        <p className={styles.logo}>ProJobHire</p>
+        <p className={styles.logo}>ProHireHub</p>
       </a>
       <div
         style={{ marginRight: "4vw", paddingTop: "30px" }}

@@ -45,7 +45,7 @@ function Details() {
         </div>
         <div className={styles.title}>
           <p style={{ fontSize: "35px" }}>{data?.role}</p>
-          <p style={{ marginTop: "-15px", color: "#595959" }}>
+          <p style={{ marginTop: "-15px", color: "#ED5353" }}>
             {data?.location} | India
           </p>
           {/* <img src={data?.companyLogoUrl} alt="logo" width={20} height={20} /> */}
