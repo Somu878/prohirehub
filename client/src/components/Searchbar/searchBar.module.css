@@ -27,7 +27,7 @@
   position: absolute;
   width: 20px;
   height: 20px;
-  top: 22.2%;
+  top: 24.3%;
   left: 18.2%;
   color: #e3e3e3;
   cursor: pointer;
@@ -64,7 +64,6 @@ select {
   outline: none;
   font-size: 17px;
   color: white;
-  margin-left: 23px;
   background-color: #ed5353;
   cursor: pointer;
 }

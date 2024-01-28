@@ -70,3 +70,12 @@ export async function EditJob(jobID, jobdata) {
     console.log(error);
   }
 }
+export async function getJobData(id) {
+  const baseURL = import.meta.env.VITE_APP_BASE_URL;
+  try {
+    const response = await axios.get(`${baseURL}/job/getjob/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}

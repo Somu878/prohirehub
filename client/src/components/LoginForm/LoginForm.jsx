@@ -19,16 +19,19 @@ function LoginForm() {
     e.preventDefault();
     try {
       const response = await LoginUser(loginData.email, loginData.password);
-
       if (response.status === "success") {
         toast.success(`Logged in as ${response.username}`);
         localStorage.setItem("token", response.token);
         localStorage.setItem("id", response.id);
-        navigate("/");
+        const check = localStorage.getItem("token");
+        if (check) {
+          navigate("/");
+        }
       } else if (response.status === "invalid") {
         toast.error("Invalid Password");
       } else if (response.status === "not found") {
         toast.error("Email not,Please register!");
+        navigate("/register");
       }
     } catch (error) {
       toast.error("Please try again!");

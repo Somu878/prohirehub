@@ -6,7 +6,6 @@ import skillset from "..//../assets/skills.json";
 import { Link } from "react-router-dom";
 
 function SearchBar({ onSearch, loggedIn }) {
-  const [searchQuery, setSearchQuery] = useState("");
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
@@ -30,7 +29,6 @@ function SearchBar({ onSearch, loggedIn }) {
     }
   };
   const handleClear = () => {
-    setSearchQuery("");
     setSelectedOptions([]);
   };
 
@@ -71,19 +69,18 @@ function SearchBar({ onSearch, loggedIn }) {
               <Tag key={item} data={item} onDeSelect={handleDeSelect} />
             ))}
           </div>
-          <div>
-            <p
-              style={{
-                color: "#ED5353",
-                fontSize: "17px",
-                marginTop: "60px",
-                cursor: "pointer",
-              }}
-              onClick={handleClear}
-            >
-              Clear
-            </p>
-          </div>
+          <p
+            style={{
+              color: "#ED5353",
+              fontSize: "18px",
+              cursor: "pointer",
+              marginTop: "50px",
+              marginLeft: "-50px",
+            }}
+            onClick={handleClear}
+          >
+            Clear
+          </p>
           {loggedIn ? (
             <Link
               to="/addjob"

@@ -38,17 +38,21 @@ function Home() {
   return (
     <div>
       <Toaster position="top-center" reverseOrder={false} />
-      <div>
+
+      <div style={{ position: "fixed", width: "100%" }}>
+        {" "}
         <Navbar />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <SearchBar loggedIn={curUser} onSearch={onSearch} />
-        </div>
       </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          paddingTop: "15vh",
+        }}
+      >
+        <SearchBar loggedIn={curUser} onSearch={onSearch} />
+      </div>
+
       {data &&
         data.map((item) => (
           <JobTile

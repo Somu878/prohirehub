@@ -11,12 +11,15 @@ const linkstyle = {
 
 function Navbar() {
   const [user, setUser] = useState(null);
+  const [login, setlogin] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("id");
     setUser(null);
+    setlogin(false);
     navigate("/login");
   };
   const fetchUserData = async () => {
@@ -24,6 +27,7 @@ function Navbar() {
       const response = await getUserId();
       if (response) {
         setUser(response);
+        setlogin(true);
       }
     } catch (error) {
       console.log(error);
@@ -46,7 +50,7 @@ function Navbar() {
       >
         {loading ? (
           <p>Please wait! Fetching Data</p>
-        ) : !user ? (
+        ) : !token ? (
           <div style={{ display: "flex", gap: "25px" }}>
             <Link style={linkstyle} to="/login">
               <button style={{ background: "transparent", color: "white" }}>
