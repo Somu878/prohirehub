@@ -247,7 +247,7 @@ function JobForm({ method, handleSubmit }) {
               background: "transparent",
               color: "#ed5353",
             }}
-            onClick={navigate("/")}
+            onClick={() => navigate("/")}
           >
             Cancel
           </button>
