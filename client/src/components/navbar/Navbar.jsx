@@ -73,7 +73,7 @@ function Navbar() {
             </button>
             <div style={{ display: "flex", gap: "10px" }}>
               <p style={{ fontFamily: "var(--dmsans)", marginTop: "7px" }}>
-                Hello, {user.username}!
+                Hello, {user?.username}!
               </p>
               <img
                 style={{ width: "33px", height: "33px", marginTop: "3px" }}
