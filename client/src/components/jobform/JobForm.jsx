@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./jobform.module.css";
 import { getJobDataID, addJob, EditJob } from "../../apis/job";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 function JobForm({ method, handleSubmit }) {
   const { id } = useParams();
+  const navigate = useNavigate();
   async function getJobData() {
     if (method === "Edit") {
       try {
@@ -35,7 +37,8 @@ function JobForm({ method, handleSubmit }) {
   async function handleAdd() {
     try {
       const response = await addJob(jobData);
-      console.log(response);
+      toast.success("New Job added");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -43,7 +46,10 @@ function JobForm({ method, handleSubmit }) {
   async function handleEdit() {
     try {
       const response = await EditJob(id, jobData);
-      console.log(response);
+      if (response.status === "success") {
+        toast.success("Successfully Edited!");
+        navigate("/");
+      }
     } catch (error) {
       console.log(error);
     }
