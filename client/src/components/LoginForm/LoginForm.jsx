@@ -30,7 +30,7 @@ function LoginForm() {
       } else if (response.status === "invalid") {
         toast.error("Invalid Password");
       } else if (response.status === "not found") {
-        toast.error("Email not,Please register!");
+        toast.error("Email not found,Please register!");
         navigate("/register");
       }
     } catch (error) {
