@@ -62,6 +62,10 @@ const jobSchema = new mongoose.Schema({
     type: mongoose.Types.ObjectId,
     required: true,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 const Job = mongoose.model("Job", jobSchema, "jobData");

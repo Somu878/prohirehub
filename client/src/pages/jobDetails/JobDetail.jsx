@@ -14,7 +14,7 @@ function JobDetail() {
       <div>
         <Navbar />
       </div>
-      <div style={{ marginLeft: "15vw" }}>
+      <div style={{ marginLeft: "15vw", marginTop: "-25px" }}>
         <Details />
       </div>
     </div>

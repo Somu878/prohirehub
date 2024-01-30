@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import styles from "./details.module.css";
+import arrow from "../../assets/arrow-left-55.svg";
 import { getJobData } from "../../apis/job";
 function Details() {
   const { id } = useParams();
   const userid = localStorage.getItem("id");
   const [data, setdata] = useState();
+  const navigate = useNavigate();
   async function getJobDetails() {
     try {
       const response = await getJobData(id);
@@ -20,8 +22,9 @@ function Details() {
   return (
     <div>
       <div className={styles.titleContainer}>
-        <p style={{ paddingTop: "25px", fontSize: "20px" }}>
-          {data?.role} at {data?.company}
+        <img onClick={() => navigate("/")} src={arrow} alt="arrow" />
+        <p style={{ fontSize: "20px" }}>
+          {data?.role} Job/Internship at {data?.company}
         </p>
       </div>
       <div className={styles.detailsContainer}>
@@ -29,12 +32,19 @@ function Details() {
           style={{
             display: "flex",
             gap: "30px",
+            paddingTop: "15px",
             paddingLeft: "3vw",
             color: "#595959",
           }}
         >
           <p>1w ago</p>
+
           <p>{data?.jobType}</p>
+          <img
+            src={data?.companyLogoUrl}
+            style={{ width: "40px", height: "40px", marginTop: "5px" }}
+            alt="image"
+          />
           {userid == data?.refUserId ? (
             <Link to={`/editjob/${id}`}>
               <button className={styles.editbtn}>Edit</button>
@@ -44,10 +54,12 @@ function Details() {
           )}
         </div>
         <div className={styles.title}>
-          <p style={{ fontSize: "35px" }}>{data?.role}</p>
+          <p style={{ fontSize: "40px" }}>{data?.role}</p>
+
           <p style={{ marginTop: "-15px", color: "#ED5353" }}>
             {data?.location} | India
           </p>
+
           {/* <img src={data?.companyLogoUrl} alt="logo" width={20} height={20} /> */}
         </div>
         <div className={styles.salary} style={{ display: "flex", gap: "50px" }}>
@@ -77,6 +89,7 @@ function Details() {
                   background: "#FFEEEE",
                   padding: "3px",
                   color: "#595959",
+                  borderRadius: "10px",
                 }}
                 key={item}
               >

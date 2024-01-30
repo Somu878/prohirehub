@@ -246,6 +246,7 @@ function JobForm({ method, handleSubmit }) {
             style={{
               background: "transparent",
               color: "#ed5353",
+              cursor: "pointer",
             }}
             onClick={() => navigate("/")}
           >

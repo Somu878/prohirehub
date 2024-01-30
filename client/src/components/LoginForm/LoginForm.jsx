@@ -14,9 +14,15 @@ function LoginForm() {
     const { name, value } = e.target;
     setLoginData((prevData) => ({ ...prevData, [name]: value }));
   };
-
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13) {
+      handleLogin();
+    }
+  };
   const handleLogin = async (e) => {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
     try {
       const response = await LoginUser(loginData.email, loginData.password);
       if (response.status === "success") {
@@ -62,6 +68,7 @@ function LoginForm() {
           onChange={handleInputChange}
           placeholder="Password"
           required
+          onKeyDown={handleKeyDown}
         />
       </div>
       <button onClick={handleLogin}>Sign in</button>

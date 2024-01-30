@@ -11,7 +11,7 @@ const jobValidation = Joi.object({
   jobLocation: Joi.string()
     .valid("remote", "in-office", "hybrid")
     .required()
-    .label("work location"),
+    .label("work mode"),
   skillsRequired: Joi.array()
     .items(Joi.string())
     .min(1)

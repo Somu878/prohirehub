@@ -12,22 +12,29 @@ function SearchBar({ onSearch, loggedIn }) {
   const handleSelect = (e) => {
     const selectedSkill = e.target.value;
     if (selectedSkill && !selectedOptions.includes(selectedSkill)) {
-      setSelectedOptions((prevOptions) => [...prevOptions, selectedSkill]);
+      setSelectedOptions((skills) => [...skills, selectedSkill]);
     }
   };
 
   const handleDeSelect = (selectedSkill) => {
-    setSelectedOptions((prevOptions) =>
-      prevOptions.filter((option) => option !== selectedSkill)
+    setSelectedOptions((skills) =>
+      skills.filter((option) => option !== selectedSkill)
     );
   };
-
-  const handleSearchSubmit = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
+  //search on keydown Enter
+  // const handleSearch = (e) => {
+  //   if (e.keyCode === 13) {
+  //     e.preventDefault();
+  //     onSearch(inputValue, selectedOptions.join(","));
+  //   }
+  // };
+  //seach using debouncing
+  const handleSearch = () => {
+    setTimeout(() => {
       onSearch(inputValue, selectedOptions.join(","));
-    }
+    }, 500);
   };
+
   const handleClear = () => {
     setSelectedOptions([]);
   };
@@ -41,7 +48,7 @@ function SearchBar({ onSearch, loggedIn }) {
         placeholder="Type any role here..."
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
-        onKeyDown={handleSearchSubmit}
+        onKeyDown={handleSearch}
       />
       <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} />
       <div style={{ marginLeft: "5vw" }}>

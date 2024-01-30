@@ -15,8 +15,15 @@ function RegisterForm() {
     const { name, value } = e.target;
     setRegisterData((prevData) => ({ ...prevData, [name]: value }));
   };
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13) {
+      handleLogin();
+    }
+  };
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
     try {
       const response = await registerUser(
         registerData.name,
@@ -79,6 +86,7 @@ function RegisterForm() {
             required
             value={registerData.password}
             onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
           />
         </div>
         <input

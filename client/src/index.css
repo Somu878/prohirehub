@@ -19,3 +19,17 @@ body {
   min-height: 100vh;
   font-family: var(--dmsans);
 }
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #d75959;
+  border-radius: 20px;
+}
