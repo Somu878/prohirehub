@@ -8,7 +8,6 @@ import { dataOnSearch } from "../../apis/job";
 function Home() {
   const [data, setData] = useState(null);
   const [curUser, setcurUser] = useState(null);
-  // const curUser = localStorage.getItem("id");
   const token = localStorage.getItem("token");
   const getId = async () => {
     try {
