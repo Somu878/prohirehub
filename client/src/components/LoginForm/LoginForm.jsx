@@ -28,7 +28,6 @@ function LoginForm() {
       if (response.status === "success") {
         toast.success(`Logged in as ${response.username}`);
         localStorage.setItem("token", response.token);
-        localStorage.setItem("id", response.id);
         const check = localStorage.getItem("token");
         if (check) {
           navigate("/");

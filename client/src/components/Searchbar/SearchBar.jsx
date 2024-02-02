@@ -41,16 +41,19 @@ function SearchBar({ onSearch, loggedIn }) {
 
   return (
     <div className={styles.Container}>
-      <input
-        type="text"
-        name="searchbox"
-        spellCheck="false"
-        placeholder="Type any role here..."
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        onKeyDown={handleSearch}
-      />
-      <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} />
+      <div>
+        <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} />
+        <input
+          type="text"
+          name="searchbox"
+          spellCheck="false"
+          placeholder="Type any role here..."
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyDown={handleSearch}
+        />
+      </div>
+
       <div style={{ marginLeft: "5vw" }}>
         <div style={{ display: "flex", flexDirection: "row", gap: "20px" }}>
           <select name="skills" onChange={handleSelect} defaultValue="default">

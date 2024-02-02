@@ -3,10 +3,26 @@ import Navbar from "../../components/navbar/Navbar";
 import SearchBar from "../../components/Searchbar/SearchBar";
 import JobTile from "../../components/jobtile/JobTile";
 import { Toaster } from "react-hot-toast";
+import { getUserId } from "../../apis/auth";
 import { dataOnSearch } from "../../apis/job";
 function Home() {
   const [data, setData] = useState(null);
-  const curUser = localStorage.getItem("id");
+  const [curUser, setcurUser] = useState(null);
+  // const curUser = localStorage.getItem("id");
+  const token = localStorage.getItem("token");
+  const getId = async () => {
+    try {
+      const response = await getUserId();
+      setcurUser(response.id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    if (token) {
+      getId();
+    }
+  });
   const getDataFromSearch = async (role, skills) => {
     try {
       const response = await dataOnSearch(role, skills);
@@ -24,7 +40,7 @@ function Home() {
     <div>
       <Toaster position="top-center" reverseOrder={false} />
 
-      <div style={{ position: "fixed", width: "100%" }}>
+      <div style={{ position: "fixed", width: "100%", zIndex: "2" }}>
         {" "}
         <Navbar />
       </div>
